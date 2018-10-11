@@ -32,25 +32,25 @@ reinicio:
 ciclodelectura:
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,48                    ;  resto 48 para tenerlo en ASCII
+        sub AL,30h                    ;  resto 48 para tenerlo en ASCII
         mul a                        ;  multiplico para agregar los ceros
         mov num,AX                   ;  muevo el valor a la variable num
             
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,48                    ;  resto 48 para tenerlo en ASCII
+        sub AL,30h                   ;  resto 48 para tenerlo en ASCII
         mul b                        ;  multiplico para agregar los ceros
         mov num,AX                   ;  muevo el valor a la variable num
             
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,48                    ;  resto 48 para tenerlo en ASCII
+        sub AL,30h                    ;  resto 48 para tenerlo en ASCII
         mul c                        ;  multiplico para agregar los ceros
         mov num,AX                   ;  muevo el valor a la variable num
         
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,48                    ;  resto 48 para tenerlo en ASCII
+        sub AL,30h                    ;  resto 48 para tenerlo en ASCII
         mov num,AX                   ;  muevo el valor a la variable num
 es_par:
         mov count,1                  ; seteo la variable en 1   
@@ -68,7 +68,8 @@ es_par:
 nopar:        
         mov ah,09                    ; Para mostrar en pantalla una cadena
         mov dx, offset text2         ; posición de la cadena a montar
-        int 21h                      ; Llamada al sistema       
+        int 21h                      ; Llamada al sistema  
+        jmp primo                    ; salto a buscar el numero primo      
 init:
         mov dx, 0h                   ;inicializo en cero 
         mov ax, 0h                   ;inicializo en cero 
@@ -95,8 +96,9 @@ continuociclo:
 print:
         call init    
         mov ax, primov
+        add ax,48
         cmp ax,2                    ;
-        jne noprimo                 ;
+        jg noprimo                 ;
         mov ah,09                   ; Para mostrar en pantalla una cadena
         mov dx, offset text4        ; posición de la cadena a montar
         int 21h                     ;
@@ -107,6 +109,7 @@ print:
         int 21h                     ; Llamada al sistema  
 ; ********************************************************************
 Salida:
+                  ;
     
 ; ========================================================
 .exit

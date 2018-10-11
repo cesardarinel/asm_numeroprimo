@@ -1,1 +1,9 @@
-t5.obj : unable to open file
+
+ Start  Stop   Length Name               Class
+
+ 00000H 000D2H 000D3H _TEXT              CODE
+ 000D4H 00138H 00065H _DATA              DATA
+ 00140H 0023FH 00100H STACK              STACK
+
+Program entry point at 0000:0000
+
