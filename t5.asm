@@ -50,6 +50,7 @@ ciclodelectura:
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
         mov num,AX                   ;  muevo el valor a la variable num
+        add num,48
 es_par:
         mov count,1                  ; iniciar la variable en 1   
         mov primov,0h                ; iniciar la variable en 1               
@@ -84,9 +85,9 @@ init:
 valida:
         call init                    ; limpio datos
         mov ax, num                  ; muevo los valores digitados  
-        cmp ax,0h                    ; comparo con cero
+        cmp al,0                    ; comparo con cero
         je es_cero                   ; pantalla cuando es cero 
-        cmp ax,1h                    ; comparo con uno
+        cmp al,1                    ; comparo con uno
         je es_uno                    ; pantalla cunado es uno 
         jmp primo                    ; salto a primo 
 es_cero:
@@ -94,17 +95,21 @@ es_cero:
         mov dx, offset ceros         ; posición de la cadena a montar
         int 21h                      ; Llamada al sistema  
         mov ah,02                    ; para mostrar carácter
+
         mov dl,10                    ; imprimió el carácter de salto de línea
         int 21h                      ; llamada sistema
-        jmp primo                    ; salto a primo 
+        jmp primo                    ; salto a primo
+
 es_uno:
         mov ah,09                    ; Para mostrar en pantalla una cadena
         mov dx, offset unos          ; posición de la cadena a montar
         int 21h                      ; Llamada al sistema  
+        
         mov ah,02                    ; para mostrar carácter
         mov dl,10                    ; imprimió el carácter de salto de línea
         int 21h                      ; llamada sistema
         jmp primo                    ; salto a primo 
+
 primo:
         call init                    ; limpio datos
         mov ax, count                ; muevo el contador a AX
