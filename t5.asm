@@ -34,25 +34,21 @@ reinicio:
 ciclodelectura:
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,30h                   ;  resto 48 para tenerlo en ASCII
         mul a                        ;  multiplico para agregar los ceros
         mov num,AX                   ;  muevo el valor a la variable num
             
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,30h                   ;  resto 48 para tenerlo en ASCII
         mul b                        ;  multiplico para agregar los ceros
         mov num,AX                   ;  muevo el valor a la variable num
             
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,30h                   ;  resto 48 para tenerlo en ASCII
         mul c                        ;  multiplico para agregar los ceros
         mov num,AX                   ;  muevo el valor a la variable num
         
         mov AH,1                     ;  para lectura de teclado.
         int 21H                      ;  llamada al SO
-        sub AL,30h                   ;  resto 48 para tenerlo en ASCII
         mov num,AX                   ;  muevo el valor a la variable num
 es_par:
         mov count,1                  ; iniciar la variable en 1   
@@ -150,4 +146,3 @@ Salida:
 ; ========================================================
 .exit
 end inicio
-
